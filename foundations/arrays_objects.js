@@ -150,7 +150,27 @@ console.log(exp3);
 
 
 // Object Literal - Key Value pairs
+let p;
 
 const person = {
-    name: 'John'
-}
+    name: 'John Doe',
+    age: 30,
+    isAdmin: true,
+    address: {
+        street: '123 Main st',
+        city: 'Boston',
+        state: 'MA',
+    },
+};
+
+p = person.name; 
+p = person.address.state;
+
+
+delete person.age;
+
+person.greet = function () {
+    console.log(`Hello, my name is ${this.name}`);  //this keyword
+};
+
+console.log(person)
