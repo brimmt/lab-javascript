@@ -1,89 +1,64 @@
-/* ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-                                                            Functions, Scope & Execution Context 11/07/2025
-/-----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* --------------------------------------------------------------------------
+    Functions, Scope & Execution Context  
+    Date: 11/07/2025
+----------------------------------------------------------------------------*/
+
+/* --------------------------- Basic Functions ----------------------------- */
 
 function sayHello() {
     console.log('Hello World');
-};
-
+}
 sayHello();
 
-function add(num1, num2) {
+function addNumbers(num1, num2) {
     console.log(num1 + num2);
-};
+}
+addNumbers(5, 6);
 
-
-add(5,6);
-
-
-function subtract (num1,num2) {
+function subtractNumbers(num1, num2) {
     return num1 - num2;
-};
-
-const result = subtract(10,2);
+}
+const result = subtractNumbers(10, 2);
 console.log(result);
 
 
+/* --------------------------- Default Parameters --------------------------- */
 
-
-// Default Parameters
-
-function registerUser(user) {     // This variable is local var within the function. It is not a function. Could set parameters also within the function variables to avoid the if statement
-   if (!user) {
-        user = 'Bot';
-    }
-    
-    return user + 'is registered';
-};
-
-
-
-
+function registerUser(user = 'Bot') {
+    return `${user} is registered`;
+}
 console.log(registerUser());
 
 
-// Rest Params
+/* --------------------------- Rest Parameters ----------------------------- */
 
 function sum(...numbers) {
     return numbers;
-};
-
-console.log(sum(1,2,3));
-
+}
+console.log(sum(1, 2, 3));
 
 
-// Object as params
+/* --------------------------- Object Parameters ---------------------------- */
 
 function loginUser(user) {
-    return `The user ${user.name} with the id of ${user.id} is logged in`;
-    
-    }
+    return `The user ${user.name} with the id ${user.id} is logged in`;
+}
 
-    const user = {
-        id: 1,
-        name: 'John'
-    };
-
-    console.log(loginUser(user));
+const user = { id: 1, name: 'John' };
+console.log(loginUser(user));
 
 
-// Arrays as params
+/* --------------------------- Array Parameters ----------------------------- */
 
 function getRandom(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length);
-
-    const item = arr[randomIndex];
-
-    console.log(item);
+    console.log(arr[randomIndex]);
 }
 
-getRandom([1,2,3,4,5,6,7,8,9,10]);
+getRandom([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
 
-
-
-// Global & Function Scope
-
+/* ----------------------- Global & Function Scope ------------------------- */
 
 const x = 100;
 console.log(x, 'in global');
@@ -92,44 +67,32 @@ function run() {
     const example = 1;
     console.log(`${example} is local to this function`);
 }
+run();
 
-run();   // Global scope can be called from within functions and outside of functions. Local scope can only be called within the function. 
 
-
-// Block Scope
-
+/* ----------------------------- Block Scope ------------------------------- */
 
 if (true) {
     const y = 200;
-    console.log(x+y);
-
+    console.log(x + y);
 }
-/*
-console.log(x + y);   <- this will not work since y is defined within the function
-*/
-
 
 for (let i = 0; i <= 10; i++) {
     console.log(i);
 }
 
 
-// How var is used
+/* ---------------------- var vs let/const Scope --------------------------- */
 
 if (true) {
-    const a = 500; // can't be called globally
-    let b = 600;  // cant be called globally
-    var c = 700; // I can call this globally. var is not block scoped. It is function scoped
+    const a = 500;
+    let b = 600;
+    var c = 700; // var is function-scoped, not block-scoped
 }
-
 console.log(c);
 
 
-
-
-
-
-// Nested Scope
+/* --------------------------- Nested Scope -------------------------------- */
 
 function first() {
     const x = 100;
@@ -138,8 +101,87 @@ function first() {
         const y = 200;
         console.log(x + y);
     }
+    
     second();
 }
 
 first();
+
+
+/* ------------------ Function Declaration vs Expression 11/13/2025------------------- */
+
+// Declaration (hoisted)
+function addDollarSign(value) {
+    return '$' + value;
+}
+console.log(addDollarSign(100));
+
+// Expression (not hoisted)
+const addPlusSign = function (value) {
+    return '+' + value;
+};
+console.log(addPlusSign(200));
+
+
+/* ---------------------------- Arrow Functions 11/13/2025 ----------------------------- */
+
+const add = (a, b) => a + b;
+console.log(add(1, 2));
+
+const subtract = (a, b) => a - b;
+const double = a => a * 2;
+
+console.log(subtract(10, 5));
+console.log(double(4));
+
+// Returning an object
+const createObj = () => ({
+    name: 'Brad'
+});
+console.log(createObj());
+
+
+/* ---------------- IIFE (Immediately Invoked Function) 11/13/2025 -------------------- */
+
+(function () {
+    const user = 'John';
+    console.log(user);
+})();
+
+
+
+
+
+/* ---------------- Challenege 11/13/2025 -------------------- */
+
+const getCelsius = f => (f - 32) * 5/9
+
+console.log(getCelsius(70));
+
+
+
+/*
+Challenge 2
+
+**Instructions:**
+
+Create an arrow function called `minMax()` 
+that takes in an array of numbers and returns an object 
+with the minimum and maximum numbers in the array.
+
+
+
+*/
+
+function minMax(arr) {
+    const min = Math.min(...arr);
+    const max = Math.max(...arr);
+
+    return {
+        min,
+        max,
+    };
+}
+
+
 
