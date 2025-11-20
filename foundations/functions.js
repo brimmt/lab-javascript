@@ -184,4 +184,203 @@ function minMax(arr) {
 }
 
 
+/* ---------------------------- Functions 11/20/2025 ----------------------------- */
+
+
+/* ---------------------------- 1 ----------------------------- */
+// Correct 
+function greet(name) {
+    return `Hello ${name}`;
+}
+
+/* ---------------------------- 2 ----------------------------- */
+
+// Correct
+function register(user = "Guest") {
+    return `${user} is registered`
+}
+
+
+/* ---------------------------- 3 ----------------------------- */
+// Correct
+function double (num) {
+    return num * 2
+}
+
+// or 
+
+const double2 = (num) => num * 2
+
+
+/* ---------------------------- 4 ----------------------------- */
+// Wrong
+function sumAll(...nums) {
+    nums.forEach(nums+nums);
+}
+
+// Correct version
+
+function sumAll(...nums) {
+    let total = 0;
+    for (let n of nums) {
+        total += n;
+    }
+    return total;
+}
+ // or 
+
+ function sumAll1(...nums) {
+    let total = 0;
+    nums.forEach(n => total += n);
+    return total;
+}
+
+// Rewrite until I get it 
+
+function sumAll2(...nums) {
+    let total = 0
+    nums.forEach( n => total += n);
+    return total;
+}
+
+/* ---------------------------- 5 ----------------------------- */
+
+// Wrong
+function getRandomItem(arr) {
+    const getItem = Math.floor(Math.random() * arr.length);
+    arr[getItem];
+}
+
+// Correct Version
+
+function getRandomItem(arr) {
+    const index = Math.floor(Math.random() * arr.length);
+    return arr[index];
+}
+
+
+/* ---------------------------- Swtiches 11/20/2025 ----------------------------- */
+
+
+const d = new Date(2020,1,10,8,0,0)
+const month = d.getMonth();
+
+switch(month) {
+    case 1:
+        console.log('It is January');
+        break;
+    case 2:
+        console.log('It is February');
+        break;
+    default:
+        console.log('It is not Jan or March');
+}
+
+
+/* ---------------------------- Truthy & Falsy 11/20/2025 ----------------------------- */
+
+const email = 'test@test.com'  // 
+
+if (email) {
+    console.log('You passed in an email');
+}
+
+console.log(Boolean(email)) // a string with anything in it is always going to default to true
+
+
+
+//Falsy Values
+// -false
+// - 0
+// - '' or empty string
+// - null 
+// - undefined
+// -NaN
+
+const n = false;
+
+console.log (Boolean(x))
+
+
+/* ---------------------------- Logical Operators 11/20/2025 ----------------------------- */
+
+// && will return first falsy value or the last value 
+
+// || Will return the first truthy value or the last value 
+let b;
+b = 10 || 20;
+b = 0 || 20;
+
+console.log(b);
+
+
+// ?? - returns the right side operand whent he left is null or undefined.
+
+let c;
+
+c = 10 ?? 20;
+console.log(c);
+
+/* ---------------------------- Logical Assignment 11/20/2025 ----------------------------- */
+
+//  || = assigns the right side value only if the left is a falsy value.
+
+let k = false;
+
+if(!k) {
+    k = 10;
+}
+
+k = k || 10;
+
+k ||= 10  // faster way to do this
+
+// &&= assigns the right side value only if the left is a truthy value.
+
+let l = 20;
+
+if(l) {
+    l= 20;
+}
+
+l = l && 20; 
+
+l &&= l;
+
+console.log(b);
+
+
+
+// ??= assigns the right side value only if the left is null or undefined. 
+
+let o = null;
+
+if (o === null || o === undefined){
+    o = 20;
+}
+
+o ??= 20;
+
+/* ---------------------------- Ternary Operator 11/20/2025 ----------------------------- */
+
+const age = 19;
+
+// using an if statement
+
+if(age >= 18) {
+    console.log('You can vote!');  
+} else {
+    console.log('You can not vote');
+}
+
+// Using a ternary Operator
+
+age >= 18 ? console.log('You can vote!') : console.log ('You cant vote');
+
+// ?  <- if   and : <- else
+
+// Assing a conditional value to a variable using a ternary operator
+
+// const canVote = age >= 18 ? true : false;
+// const canVote = age >= 18 ? 'You can vote!': 'You cant vote';
 
