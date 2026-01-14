@@ -383,4 +383,3 @@ age >= 18 ? console.log('You can vote!') : console.log ('You cant vote');
 
 // const canVote = age >= 18 ? true : false;
 // const canVote = age >= 18 ? 'You can vote!': 'You cant vote';
-

@@ -228,4 +228,3 @@ for ( const key in colorArr) {
 }
 
 
-

@@ -44,4 +44,3 @@ console.log(obj, str2);
 /* Strinify or parse. 
 stringify and parse is used to send data and also store in local storage , which will store in client on browser(client can only store strings)  */
 
-

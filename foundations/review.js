@@ -165,4 +165,3 @@ const oddNums = testNumbers.filter(num => num % 2 !== 0);
 console.log(oddNums);
 
 
-
